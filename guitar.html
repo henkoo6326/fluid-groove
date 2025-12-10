@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fluid groove</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <ul class="logo">
+                <li><a href="index.html"></a></li>
+            </ul>
+            <nav>
+                <ul>
+                    <li><a href="drum.html">DRUM</a></li>
+                    <li><a href="guitar.html">E. GUITAR</a></li>
+                    <li><a href="bass.html">BASS</a></li>
+                    <li><a href="keyboard.html">KEYBOARD</a></li>
+                    <li><a href="final.html">FINAL MIX</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="guitar container">
+            <div class="grid-container">
+                <aside class="left-contents col-span-3">
+                    <div class="top">
+                        <p class="key-w white">Session</p>
+                        <p class="copy-l white">
+                            E. GUITAR : <br />Click to activate
+                        </p>
+                        <p class="copy-m white">
+                            <span class="bold"
+                                >The secret to my amp gain settings.</span
+                            >
+                            The signature riffs and special effect tones I
+                            enjoyed playing since high school band days are
+                            <span class="bold">recreated on this page.</span>
+                        </p>
+                    </div>
+                    <div class="bottom fav-grid-area">
+                        <div class="my-fav-title">
+                            <p class="key-w white">MY FAV</p>
+                        </div>
+                        <div class="fav-button-wrap">
+                            <h1
+                                id="gmajor-btn"
+                                data-sound="assets/chords/G.mp3"
+                            >
+                                G#m7
+                            </h1>
+                            <h1
+                                id="dslashfs-btn"
+                                data-sound="assets/chords/DF.mp3"
+                            >
+                                Asus2
+                            </h1>
+                            <h1 id="em7-btn" data-sound="assets/chords/Em7.mp3">
+                                Bsus4
+                            </h1>
+                            <h1
+                                id="cadd9-btn"
+                                data-sound="assets/chords/Cadd9.mp3"
+                            >
+                                C#m7
+                            </h1>
+                        </div>
+                    </div>
+                </aside>
+                <main class="right-contents col-offset-3 col-span-9">
+                    <div class="guitar-main-wrap e-guitar">
+                        <div class="guitar" id="guitar">
+                            <div class="hole"></div>
+                            <div class="strings">
+                                <div
+                                    class="string-wrap"
+                                    data-sound="assets/guitar/E6.mp3"
+                                >
+                                    <div class="string" data-note="E"></div>
+                                </div>
+                                <div
+                                    class="string-wrap"
+                                    data-sound="assets/guitar/A5.mp3"
+                                >
+                                    <div class="string" data-note="A"></div>
+                                </div>
+                                <div
+                                    class="string-wrap"
+                                    data-sound="assets/guitar/D4.mp3"
+                                >
+                                    <div class="string" data-note="D"></div>
+                                </div>
+                                <div
+                                    class="string-wrap"
+                                    data-sound="assets/guitar/G3.mp3"
+                                >
+                                    <div class="string" data-note="G"></div>
+                                </div>
+                                <div
+                                    class="string-wrap"
+                                    data-sound="assets/guitar/B2.mp3"
+                                >
+                                    <div class="string" data-note="B"></div>
+                                </div>
+                                <div
+                                    class="string-wrap"
+                                    data-sound="assets/guitar/E1.mp3"
+                                >
+                                    <div class="string" data-note="e"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+        <footer class="container">
+            <div class="grid-container">
+                <span class="col-span-4 footer-wrap">
+                    <div class="logo"></div>
+                    <p class="foo-t">© 2025. HAEEUN KO. All Rights Reserved.</p>
+                </span>
+
+                <span class="col-offset-7 col-span-2 footer-wrap_col foo-t">
+                    <span class="gray">웹퍼블리싱 기초 기말고사</span
+                    ><br />FLUID GROOVE
+                </span>
+
+                <span class="col-offset-9 col-span-3 footer-wrap_col foo-t">
+                    <span class="gray">2025학년도 2학기</span
+                    ><br />디지털미디어디자인과 | 22561005 | 고해은
+                </span>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>

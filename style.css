@@ -1,0 +1,945 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Apple SD Gothic Neo", sans-serif;
+    color: #f5f5f5;
+    background-color: #050505;
+}
+
+h1 {
+    line-height: 1.6;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    padding: 0 5% 0;
+}
+
+/* 2. 그리드 컨테이너 */
+.grid-container {
+    display: grid;
+    gap: 2%; /* 거터(간격) 2% 설정 */
+    /* 12개의 동일한 비율 컬럼 정의 */
+    grid-template-columns: repeat(12, 1fr);
+}
+
+/* 3. 컬럼 스팬 클래스 정의 (너비 지정) */
+/* ⭐ 오프셋 클래스와 충돌을 피하기 위해 grid-column-end만 사용 */
+.col-span-1 {
+    grid-column-end: span 1;
+}
+.col-span-2 {
+    grid-column-end: span 2;
+}
+.col-span-3 {
+    grid-column-end: span 3;
+}
+.col-span-4 {
+    grid-column-end: span 4;
+}
+.col-span-5 {
+    grid-column-end: span 5;
+}
+.col-span-6 {
+    grid-column-end: span 6;
+}
+.col-span-7 {
+    grid-column-end: span 7;
+}
+.col-span-8 {
+    grid-column-end: span 8;
+}
+.col-span-9 {
+    grid-column-end: span 9;
+}
+.col-span-10 {
+    grid-column-end: span 10;
+}
+.col-span-11 {
+    grid-column-end: span 11;
+}
+.col-span-12 {
+    grid-column-end: span 12;
+}
+
+/* 4. 오프셋(Offset) 클래스 정의 (시작 위치 지정) */
+/* grid-column-start만 사용하여 Span 클래스의 end를 덮어쓰지 않도록 합니다. */
+.col-offset-1 {
+    grid-column-start: 2;
+}
+.col-offset-2 {
+    grid-column-start: 3;
+}
+.col-offset-3 {
+    grid-column-start: 4;
+}
+.col-offset-4 {
+    grid-column-start: 5;
+}
+.col-offset-5 {
+    grid-column-start: 6;
+}
+.col-offset-6 {
+    grid-column-start: 7;
+}
+.col-offset-7 {
+    grid-column-start: 8;
+}
+.col-offset-8 {
+    grid-column-start: 9;
+}
+.col-offset-9 {
+    grid-column-start: 10;
+}
+.col-offset-10 {
+    grid-column-start: 11;
+}
+.col-offset-11 {
+    grid-column-start: 12;
+}
+
+/* Header (고정) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.041vw 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+}
+
+/* 1. .logo (UL): 크기 컨테이너 역할만 합니다. */
+.logo {
+    list-style: none;
+    width: 1.3542vw; /* 로고의 최종 너비 */
+    height: 1.5625vw; /* 로고의 최종 높이 */
+    /* background-image 관련 속성은 A 태그로 이동했습니다. */
+}
+
+/* 2. .logo 내부 LI: A 태그가 100% 크기를 상속받도록 보장합니다. */
+.logo li {
+    width: 100%;
+    height: 100%;
+}
+
+/* 3. .logo a (A): 이미지, 필터, 클릭 영역을 모두 가집니다. */
+.logo a {
+    text-decoration: none;
+
+    /* ⭐ A 태그에 로고 이미지를 직접 부여합니다. (이미지 표시) ⭐ */
+    background-image: url(assets/logo.png);
+    background-position: center;
+    background-size: cover;
+    filter: invert(20%);
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5625vw;
+}
+
+nav a {
+    text-decoration: none;
+    color: #dadada;
+    font-weight: 400;
+    filter: invert(60%);
+    transition: color 0.2s;
+    font-size: 1.0417vw;
+}
+
+nav a:hover {
+    color: #ff007f;
+    filter: none;
+}
+
+.disk {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    z-index: 1;
+    overflow: hidden;
+    padding: 5% 5%;
+}
+
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    /* filter: brightness(0.6); */
+}
+
+.scroll-content-wrapper {
+    position: relative;
+    z-index: 50;
+    padding-top: 100vh;
+}
+
+.gap {
+    height: 8vh;
+    background-color: #f5f5f5;
+}
+
+/* Album Section */
+.album-section {
+    height: calc(1080 / 1920 * 100vw);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 3.125vw; /* 16px -> 0.8333vw (원래 4%였으나 픽셀 기준으로 변환) */
+    padding-bottom: 3.125vw; /* 60px -> 3.125vw (원래 6%였으나 픽셀 기준으로 변환) */
+    background-color: #f5f5f5;
+}
+
+.al-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.al-text-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.fi-left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+.fi-text-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+}
+
+.key-w {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 0.9375vw; /* 18px -> 0.9375vw */
+    margin-bottom: 1.1458vw; /* 22px -> 1.1458vw */
+    font-style: normal;
+    font-weight: 600;
+    line-height: 160%; /* 28.8px */
+    letter-spacing: -0.36px;
+}
+
+.copy-l {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 1.875vw; /* 36px -> 1.875vw */
+    margin-bottom: 1.4583vw; /* 28px -> 1.4583vw */
+    font-style: normal;
+    font-weight: 800;
+    line-height: 140%; /* 50.4px */
+    letter-spacing: -0.72px;
+    /* margin-bottom: 28px; */
+}
+
+.copy-m {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 1.0417vw; /* 20px -> 1.0417vw */
+    font-style: normal;
+    font-weight: 300;
+    line-height: 160%; /* 32px */
+    letter-spacing: -0.4px;
+}
+
+.copy-m .bold {
+    font-family: Pretendard;
+    font-size: 1.0417vw; /* 20px -> 1.0417vw */
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%; /* 32px */
+    letter-spacing: -0.4px;
+}
+
+.white {
+    color: #f5f5f5;
+}
+
+.al-button-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.al-button-wrap h1 {
+    color: #000;
+    font-family: Pretendard;
+    font-size: 2.2917vw; /* 44px -> 2.2917vw */
+    font-style: normal;
+    font-weight: 900;
+    line-height: 160%; /* 67.2px */
+    letter-spacing: -0.84px;
+    transition: color 0.2s ease;
+}
+
+.final-img {
+    width: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: #000;
+}
+
+.poster-img {
+    /* margin: -2px 0 -80px; */
+    height: 100%;
+    background-image: url(assets/drum.jpg);
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease;
+}
+
+.al-button-wrap h1.active {
+    color: #ff007f;
+    /* 텍스트 밑줄이나 다른 시각적 효과 추가 가능 */
+    /* text-decoration: underline; */
+}
+
+.al-button-wrap h1:hover {
+    color: #00ff00;
+    cursor: pointer;
+}
+
+.al-button-wrap h1.active:hover {
+    color: #ff007f; /* 활성화 상태에서는 호버해도 색상 유지 */
+}
+
+.drum {
+    height: 100vh;
+    background-color: #050505;
+}
+
+.drum .left-contents {
+    border: 1px solid #c1c1c1;
+    border-radius: 8px;
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 6.25vw;
+    margin-bottom: 0.9375vw;
+}
+
+.drum .left-contents .bottom.fav-grid-area {
+    display: flex;
+    align-items: flex-start; /* 상단 정렬 */
+    margin-top: 2.083vw; /* 상단 콘텐츠와의 여백 */
+}
+
+.drum .left-contents .bottom .my-fav-title {
+    /* 12 컬럼 그리드에서 col-span-1과 유사하게 약 1/3 비율 할당 */
+    flex: 1;
+    margin-top: 3.2%;
+    /* 오른쪽 내용과의 간격 */
+    padding-right: 1.041vw;
+}
+
+.drum .left-contents .bottom .fav-button-wrap {
+    /* 12 컬럼 그리드에서 col-span-2와 유사하게 약 2/3 비율 할당 */
+    flex: 2;
+}
+.drum .left-contents .fav-button-wrap h1 {
+    color: #f5f5f5; /* 기본 텍스트 색상 (흰색) */
+    font-family: Pretendard;
+    font-size: 2.2917vw; /* al-button-wrap과 동일한 크기 (44px 기준) */
+    font-style: normal;
+    font-weight: 900;
+    line-height: 160%;
+    letter-spacing: -0.84px;
+
+    /* ⭐ 부드러운 전환 효과 추가 (호버/클릭 애니메이션의 핵심) ⭐ */
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+/* ⭐ 1. 호버 애니메이션: 색상을 #00ff00 (녹색)으로 변경 ⭐ */
+.drum .left-contents .fav-button-wrap h1:hover {
+    color: #00ff00;
+}
+
+/* ⭐ 2. 클릭/활성화 애니메이션: 색상을 #ff007f (핑크)로 변경 ⭐ */
+/* JavaScript에서 .active 클래스를 추가했을 때 적용됩니다. */
+.drum .left-contents .fav-button-wrap h1.active {
+    color: #ff007f;
+}
+
+/* 3. 활성화된 상태에서는 호버해도 색상이 유지되도록 설정 */
+.drum .left-contents .fav-button-wrap h1.active:hover {
+    color: #ff007f;
+}
+
+.drum .right-contents {
+    border: 1px solid #c1c1c1;
+    border-radius: 8px;
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* .top과 .bottom을 수직으로 쌓음 */
+    justify-content: center; /* .top과 .bottom을 수직 중앙 정렬 */
+    align-items: center;
+    margin-top: 6.25vw;
+    margin-bottom: 0.9375vw;
+}
+
+.drum .wrap {
+    display: flex;
+    /* wrap 내부의 원들이 wrap의 중앙에 오도록 수평 중앙 정렬 */
+    justify-content: center;
+    margin-bottom: 10px; /* wrap들 사이에 기본 여백 추가 (선택 사항) */
+}
+
+.circle {
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid #f5f5f5;
+    background-color: rgba(245, 245, 245, 0.2);
+    cursor: pointer;
+}
+
+.circle-1 {
+    width: 10.42vw; /* 200px -> 10.42vw */
+    height: 10.42vw;
+}
+
+.circle-2 {
+    width: 11.46vw; /* 220px -> 11.46vw */
+    height: 11.46vw;
+}
+
+.circle-3 {
+    width: 12.5vw; /* 240px -> 12.50vw */
+    height: 12.5vw;
+}
+
+.top .wrap:nth-child(1) {
+    gap: 30.73vw;
+    margin-bottom: -71px;
+}
+
+/* 두 번째 wrap: gap 148px */
+.top .wrap:nth-child(2) {
+    gap: 7.71vw;
+}
+
+/* 세 번째 wrap: gap 75px */
+.top .wrap:nth-child(3) {
+    gap: 3.91vw;
+}
+
+.circle,
+.bottom .radius {
+    position: relative;
+    border-radius: 50%;
+    border: 2px solid #f5f5f5;
+    background-color: rgba(245, 245, 245, 0.2);
+    cursor: pointer;
+
+    /* ⭐ 핵심 수정: 부드러운 색상 전환 (드롭다운 효과) 적용 ⭐ */
+    /* 배경색과 테두리색이 0.3초 동안 부드럽게 변하도록 설정합니다. */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+    width: 100%;
+
+    /* 텍스트 색상과 투명도도 부드럽게 변하도록 설정 */
+    transition: opacity 0.2s, color 0.3s ease;
+}
+
+.circle:hover .circle-text {
+    opacity: 1;
+}
+
+.circle:hover .circle-text,
+.bottom .radius:hover .circle-text {
+    opacity: 1;
+}
+
+.circle.active,
+.bottom .radius.active {
+    background-color: #ff007f; /* 배경: 핑크 */
+    border-color: #ff007f; /* 테두리: 핑크 */
+}
+
+/* ⭐ 활성화 시 텍스트 색상 변경 (흰색->어두운색) ⭐ */
+.circle.active .circle-text,
+.bottom .radius.active .circle-text {
+    color: #050505 !important; /* 텍스트: 어두운 색상 */
+}
+
+.bottom {
+    display: flex;
+    justify-content: center;
+    gap: 3.91vw;
+}
+
+.bottom .radius {
+    width: 6.23vw; /* 103px -> 5.36vw */
+    height: 7.92vw; /* 152px -> 7.92vw */
+    border-radius: 1.04vw; /* 20px -> 1.04vw */
+}
+
+/* eeeeeeeeeeeeeeeeeeeeee.guitar */
+
+.guitar {
+    height: 100vh;
+    background-color: #050505;
+}
+
+.guitar .left-contents {
+    border: 1px solid #c1c1c1;
+    border-radius: 8px;
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 6.25vw;
+    margin-bottom: 0.9375vw;
+}
+
+.guitar .right-contents {
+    border: 1px solid #c1c1c1;
+    border-radius: 8px;
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6.25vw;
+    margin-bottom: 0.9375vw;
+}
+
+/* 기타 컴포넌트 스타일 */
+.guitar .guitar-main-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.guitar .guitar {
+    position: relative;
+    width: 41.67vw; /* 800px 기준 */
+    height: 18.75vw; /* 360px 기준 */
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.guitar .hole {
+    display: none;
+}
+
+.guitar .strings {
+    position: absolute;
+    width: 120%; /* 500px -> 80% (줄 길이 증가) */
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* ⭐ 중앙 정렬 */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    z-index: 5;
+    padding: 0; /* 중앙 정렬을 위해 padding 제거 */
+    user-select: none;
+}
+
+.guitar .string-wrap {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.guitar .string {
+    width: 100%;
+    background: linear-gradient(to right, #777, #ccc, #777);
+    transition: background 0.1s, transform 0.1s, color 0.01s;
+    transform-origin: center;
+}
+
+/* ⭐ 6줄 굵기 차이 (크게 확대) ⭐ */
+.guitar .string[data-note="E"] {
+    height: 0.42vw;
+} /* 0.21vw -> 0.42vw (2배 확대) */
+.guitar .string[data-note="A"] {
+    height: 0.36vw;
+} /* 0.18vw -> 0.36vw */
+.guitar .string[data-note="D"] {
+    height: 0.32vw;
+} /* 0.16vw -> 0.32vw */
+.guitar .string[data-note="G"] {
+    height: 0.26vw;
+} /* 0.13vw -> 0.26vw */
+.guitar .string[data-note="B"] {
+    height: 0.2vw;
+} /* 0.10vw -> 0.20vw */
+.guitar .string[data-note="e"] {
+    height: 0.16vw;
+} /* 0.08vw -> 0.16vw */
+
+.string-wrap:hover .string {
+    background: linear-gradient(to right, #ffffff, #beffbe, #ffffff);
+}
+
+.string.active {
+    background: linear-gradient(to right, #ff007f, #b30059, #ff007f);
+}
+
+@keyframes vibrate {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(1.5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-1.5deg);
+    }
+    0% {
+        transform: rotate(0deg);
+    }
+}
+
+.vibrating {
+    animation: vibrate 0.1s infinite;
+}
+
+/* 기타 페이지에서는 드럼 요소를 숨깁니다. */
+.guitar .wrap,
+.guitar .bottom:not(.fav-grid-area) {
+    display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* FAV Button Styles (드럼과 기타가 공유하는 코드) (생략 없이 유지) */
+/* ------------------------------------------------------------------ */
+
+.drum .left-contents .bottom.fav-grid-area,
+.guitar .left-contents .bottom.fav-grid-area {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2.083vw;
+}
+
+.drum .left-contents .bottom .my-fav-title,
+.guitar .left-contents .bottom .my-fav-title {
+    flex: 1;
+    margin-top: 3.2%;
+    padding-right: 1.041vw;
+}
+
+.drum .left-contents .bottom .fav-button-wrap,
+.guitar .left-contents .bottom .fav-button-wrap {
+    flex: 2;
+}
+
+/* Fav Button Style */
+.left-contents .fav-button-wrap h1 {
+    color: #f5f5f5;
+    font-family: Pretendard;
+    font-size: 2.2917vw;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 160%;
+    letter-spacing: -0.84px;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.left-contents .fav-button-wrap h1:hover {
+    color: #00ff00;
+}
+
+.left-contents .fav-button-wrap h1.active {
+    color: #ff007f;
+}
+
+.left-contents .fav-button-wrap h1.active:hover {
+    color: #ff007f;
+}
+
+/* bbbbbbbbbbbbbbbasssssssssss */
+/* style.css 파일의 기타 줄 굵기 정의 (기존 E.GUITAR 코드 아래에 추가) */
+
+/* ⭐ BASS: 4현 베이스 줄 굵기 (일반 기타 줄보다 더 두껍게) ⭐ */
+.bass .string[data-note="E"] {
+    height: 0.8vw; /* E.Guitar 0.42vw -> 0.8vw */
+}
+.bass .string[data-note="A"] {
+    height: 0.7vw; /* E.Guitar 0.36vw -> 0.7vw */
+}
+.bass .string[data-note="D"] {
+    height: 0.6vw; /* E.Guitar 0.32vw -> 0.6vw */
+}
+.bass .string[data-note="G"] {
+    height: 0.5vw; /* E.Guitar 0.26vw -> 0.5vw */
+}
+
+/* ⭐ 기타 페이지와 겹치는 .guitar 선택자 대신, .bass .guitar 선택자를 사용하면 베이스에만 적용됩니다. ⭐ */
+.bass .guitar .strings {
+    /* 4현만 있으므로 줄 간격이 더 넓어지도록 조정 */
+    width: 120%;
+    height: 90%; /* E.Guitar 80% -> 60%로 줄여서 중앙에 4줄만 배치 */
+}
+
+/* style.css 파일의 폰트/카피 스타일 (기존 드럼/기타 스타일과 동일하게) */
+.bass .left-contents {
+    /* .guitar .left-contents 와 동일 */
+    border: 1px solid #c1c1c1;
+    border-radius: 8px;
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 6.25vw;
+    margin-bottom: 0.9375vw;
+}
+
+.bass .right-contents {
+    /* .guitar .right-contents 와 동일 */
+    border: 1px solid #c1c1c1;
+    border-radius: 8px;
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6.25vw;
+    margin-bottom: 0.9375vw;
+}
+
+/* 베이스 페이지에서는 드럼 요소를 숨깁니다. */
+.bass .wrap,
+.bass .bottom:not(.fav-grid-area) {
+    display: none;
+}
+
+/* footer */
+
+footer {
+    /* margin: 0; */
+    /* padding: 32px 0 18px; */
+    width: 100%;
+    height: 7.8125vw; /* 150px -> 7.8125vw (높이도 VW로 조정) */
+    align-content: center;
+    background-color: #050505;
+    /* display: flex; */
+    /* bottom: 0; */
+    z-index: 1000;
+    position: relative;
+}
+
+.footer-wrap {
+    display: flex;
+    gap: 1.6667vw; /* 32px -> 1.6667vw */
+}
+
+.foo-t {
+    color: #f5f5f5;
+    font-family: Pretendard;
+    font-size: 0.9375vw; /* 18px -> 0.9375vw */
+    font-style: normal;
+    font-weight: 500;
+    /* line-height: 120%; 35.2px */
+    letter-spacing: -0.44px;
+}
+
+.footer-wrap_col {
+    display: flex;
+    flex-direction: column;
+}
+
+.gray {
+    color: #808080;
+    font-family: Pretendard;
+    font-size: 0.9375vw; /* 18px -> 0.9375vw */
+    font-style: normal;
+    font-weight: 500;
+    /* line-height: 160%; */
+    letter-spacing: -0.44px;
+}
+
+/* ==================================================================
+ * 미디어 쿼리: 태블릿/패드 버전 (최대 1024px) - 통합 수정본
+ * ------------------------------------------------------------------
+ * span.bold 및 copy-m 폰트 크기 증대
+ * ================================================================== */
+ @media (max-width: 1024px) {
+
+    /* --- 공통 요소 수정 --- */
+    header {
+        padding: 0 4vw; 
+    }
+    header nav ul li a {
+        font-size: 1.6vw; /* 폰트 크기 약간 증대 */
+    }
+    footer {
+        padding: 20px 4vw;
+    }
+    .foo-t, .gray {
+        font-size: 1.3vw; /* 폰트 크기 약간 증대 */
+    }
+    .footer-wrap_col {
+        margin-left: 2vw; 
+    }
+
+    /* ------------------------------------------------------------------
+     * I. index.html 수정
+     * ------------------------------------------------------------------ */
+    .scroll-content-wrapper .gap {
+        height: 12vh; 
+    }
+    .key-w { 
+        font-size: 2vw; /* 키워드 텍스트 증대 */
+    }
+    .copy-l { 
+        font-size: 3.8vw; /* 큰 제목 텍스트 증대 */
+        margin-bottom: 22px;
+    }
+    .copy-m { 
+        font-size: 1.9vw; /* ⭐ 본문 텍스트 크기 증대 ⭐ */
+        line-height: 1.6;
+    }
+    .al-button-wrap h1 {
+        font-size: 2.5vw; /* 버튼 텍스트 크기 증대 */
+        padding: 12px 15px;
+    }
+    #disk {
+        height: 90vh; 
+    }
+
+
+    /* ------------------------------------------------------------------
+     * II. drum.html / guitar.html 수정
+     * ------------------------------------------------------------------ */
+    .drum, .guitar {
+        padding-top: 5vh;
+        padding-bottom: 5vh;
+        min-height: 90vh; 
+    }
+    
+    .left-contents {
+        padding: 0 1.5vw; /* 패딩 조정 */
+    }
+
+    /* 텍스트 크기 조정 */
+    .drum .key-w, .guitar .key-w { 
+        font-size: 2vw;
+    }
+    .drum .copy-l, .guitar .copy-l { 
+        font-size: 3.8vw; /* 큰 제목 텍스트 증대 */
+        margin-bottom: 22px;
+    }
+    .drum .copy-m, .guitar .copy-m { 
+        font-size: 1.9vw; /* ⭐ 본문 텍스트 크기 증대 ⭐ */
+        line-height: 1.6;
+    }
+    
+    /* 버튼 영역 크기 조정 */
+    .fav-button-wrap {
+        gap: 12px;
+        margin-top: 30px;
+    }
+    .fav-button-wrap h1 {
+        width: calc(50% - 6px); /* 간격에 맞게 조정 */
+        font-size: 2.5vw; /* 버튼 텍스트 크기 증대 */
+        padding: 12px 5px;
+    }
+
+    /* ------------------------------------------------------------------
+     * III. final.html 수정
+     * ------------------------------------------------------------------ */
+    .floating-audio-bar {
+        left: 1.5%; 
+        width: 7vw; 
+        gap: 1.5vw;
+    }
+    .session-name {
+        font-size: 1.2vw;
+    }
+    .floating-audio-bar audio {
+        height: 2.8vw; 
+    }
+    
+    .final-section .grid-container {
+        padding-left: 9vw; /* 플로팅 바 공간 고려 */
+        padding-right: 4%;
+    }
+
+    /* FINAL 섹션 텍스트 크기 조정 */
+    .final-section .key-w { 
+        font-size: 2vw;
+    }
+    .final-section .copy-l { 
+        font-size: 3.8vw; /* 큰 제목 텍스트 증대 */
+        margin-bottom: 22px;
+    }
+    .final-section .copy-m { 
+        font-size: 1.9vw; /* ⭐ 본문 텍스트 크기 증대 ⭐ */
+        line-height: 1.6;
+    }
+}

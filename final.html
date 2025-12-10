@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fluid groove - FINAL MIX</title>
+        <link rel="stylesheet" href="style.css" />
+        <style>
+            /* ------------------------------------------------------------------
+             * FINAL 섹션 중앙 정렬 및 높이 확보
+             * ------------------------------------------------------------------ */
+            .final-section {
+                height: 100vh;
+                padding-top: 5vw;
+                padding-bottom: 5vw;
+                background-color: #050505;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* 왼쪽 플로팅 바 공간 확보 */
+            .final-section .grid-container {
+                padding-left: 5vw;
+                padding-right: 5%;
+                width: 100%;
+                height: 100%;
+            }
+
+            /* 섹션 텍스트 색상 (배경이 어두우므로 흰색으로 변경) */
+            .final-section .key-w,
+            .final-section .copy-l,
+            .final-section .copy-m,
+            .final-section .copy-m .bold {
+                color: #f5f5f5;
+            }
+
+            /* ------------------------------------------------------------------
+             * Grid 순서 (4칸 / 7칸 배치)
+             * ------------------------------------------------------------------ */
+
+            /* 짝수 섹션 (reverse): 이미지 좌 (1~7), 텍스트 우 (9~12) */
+            .final-section.reverse .final-img {
+                grid-column-start: 1;
+                grid-column-end: span 7;
+            }
+            .final-section.reverse .fi-left {
+                grid-column-start: 9;
+                grid-column-end: span 4;
+            }
+
+            /* 홀수 섹션 (기본): 텍스트 좌 (1~4), 이미지 우 (6~12) */
+            .final-section:not(.reverse) .fi-left {
+                grid-column-start: 1;
+                grid-column-end: span 4;
+            }
+            .final-section:not(.reverse) .final-img {
+                grid-column-start: 6;
+                grid-column-end: span 7;
+            }
+
+            /* ------------------------------------------------------------------
+             * 컨텐츠 영역 (.final-img) 스타일
+             * ------------------------------------------------------------------ */
+            .final-img {
+                width: 100%;
+                height: 100%;
+                /* 비디오/이미지 컨테이너 기준점 */
+                position: relative;
+            }
+
+            /* ⭐ 이미지 파일 경로 설정 (섹션 1~4) ⭐ */
+            .final-section.section-1 .final-img {
+                background-image: url(/assets/final/1.JPG); /* 앞에 '/' 추가 */
+            }
+            .final-section.section-2 .final-img {
+                background-image: url(/assets/final/2.JPG);
+            }
+            .final-section.section-3 .final-img {
+                background-image: url(/assets/final/3.JPG);
+            }
+            .final-section.section-4 .final-img {
+                background-image: url(/assets/final/4.jpeg);
+            }
+
+            /* 이미지 공통 스타일 */
+            .final-img[style*="background-image"],
+            .final-section.section-1 .final-img,
+            .final-section.section-2 .final-img,
+            .final-section.section-3 .final-img,
+            .final-section.section-4 .final-img {
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            /* ⭐ 비디오 스타일 (섹션 5, 6) ⭐ */
+            .final-img video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                /* 영역을 꽉 채우고 잘리도록 설정 */
+                object-fit: cover;
+            }
+
+            /* ------------------------------------------------------------------
+             * 플로팅 오디오 바
+             * ------------------------------------------------------------------ */
+            .floating-audio-bar {
+                position: fixed;
+                left: 2%;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 200;
+                width: 5vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5vw;
+            }
+
+            .audio-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                /* 컨트롤러 크기에 맞게 너비 확보 */
+                min-width: 9vw;
+            }
+
+            .session-name {
+                color: #f5f5f5;
+                font-size: 0.8vw;
+                font-weight: 500;
+                margin-bottom: 0.3vw;
+                text-transform: uppercase;
+            }
+
+            .floating-audio-bar audio {
+                width: 100%;
+                height: 2vw;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <ul class="logo">
+                <li><a href="index.html"></a></li>
+            </ul>
+            <nav>
+                <ul>
+                    <li><a href="drum.html">DRUM</a></li>
+                    <li><a href="guitar.html">E. GUITAR</a></li>
+                    <li><a href="bass.html">BASS</a></li>
+                    <li><a href="keyboard.html">KEYBOARD</a></li>
+                    <li><a href="final.html">FINAL MIX</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="floating-audio-bar">
+            <div class="audio-item">
+                <span class="session-name">DRUM</span>
+                <audio
+                    src="assets/drum-inst.m4a"
+                    controls
+                    autoplay
+                    loop
+                    muted
+                ></audio>
+            </div>
+            <div class="audio-item">
+                <span class="session-name">GUITAR</span>
+                <audio
+                    src="assets/guitar-inst.m4a"
+                    controls
+                    autoplay
+                    loop
+                    muted
+                ></audio>
+            </div>
+            <div class="audio-item">
+                <span class="session-name">BASS</span>
+                <audio
+                    src="assets/bass-inst.m4a"
+                    controls
+                    autoplay
+                    loop
+                    muted
+                ></audio>
+            </div>
+            <div class="audio-item">
+                <span class="session-name">KEYBOARD</span>
+                <audio
+                    src="assets/keyboard-inst.m4a"
+                    controls
+                    autoplay
+                    loop
+                    muted
+                ></audio>
+            </div>
+            <div class="audio-item">
+                <span class="session-name">VOCAL</span>
+                <audio
+                    src="assets/vocal.m4a"
+                    controls
+                    autoplay
+                    loop
+                    muted
+                ></audio>
+            </div>
+        </div>
+
+        <section class="final-section container section-1">
+            <div class="grid-container">
+                <div class="fi-left col-span-4">
+                    <div class="fi-text-wrap">
+                        <p class="key-w">2023 | 제주중앙여자고등학교</p>
+                        <p class="copy-l">우리 학교<br />돈 쓴 날</p>
+                        <p class="copy-m">
+                            항상 저희 학교에 밴드부가 없단 게 속상했거든요
+                            <span class="bold">그래서 제가 만들었습니다.</span>
+                            그 과정에서 앰프나 여러 장비를 사느라 학교 돈을 펑펑
+                            썼네요~ 모든 장비가 도착하고
+                            <span class="bold"
+                                >기뻐서 부원들과 찍은 사진!!</span
+                            >
+                        </p>
+                    </div>
+                </div>
+                <div class="final-img col-span-7"></div>
+            </div>
+        </section>
+
+        <section class="final-section container reverse section-2">
+            <div class="grid-container">
+                <div class="final-img col-span-7"></div>
+                <div class="fi-left col-span-4">
+                    <div class="fi-text-wrap">
+                        <p class="key-w">2023 | 제주중앙여자고등학교</p>
+                        <p class="copy-l">진짜<br />기뻤거든용</p>
+                        <p class="copy-m">
+                            제가 만든 동아리에
+                            <span class="bold">제가 좋아하는 사람들</span>과
+                            엄청 친절하신 야마하 직원분 꺅~~ 언박싱하는데
+                            너무너무 행복해서 이날 사진만
+                            <span class="bold">825장</span>이네요 으하하
+                            행복했네요.ㅜㅜ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-section container section-3">
+            <div class="grid-container">
+                <div class="fi-left col-span-4">
+                    <div class="fi-text-wrap">
+                        <p class="key-w">2023 | 제주중앙여자고등학교</p>
+                        <p class="copy-l">
+                            체육대회<br />공연 끝나고 한 컷 오예!!
+                        </p>
+                        <p class="copy-m">
+                            매일매일 시간 내서 연습하고 연습한 과정이
+                            있었기에...
+                            <span class="bold">뿌듯함</span>
+                            이 엄청 컸습니다 흐흐
+                            <span class="bold">신해철의 그대에게</span>라는 곡을
+                            불렀습니다. 햐~
+                        </p>
+                    </div>
+                </div>
+                <div class="final-img col-span-7"></div>
+            </div>
+        </section>
+
+        <section class="final-section container reverse section-4">
+            <div class="grid-container">
+                <div class="final-img col-span-7"></div>
+                <div class="fi-left col-span-4">
+                    <div class="fi-text-wrap">
+                        <p class="key-w">2025 | 계원예술대학교</p>
+                        <p class="copy-l">RE : 또드부</p>
+                        <p class="copy-m">
+                            고등학교 때 그 밴드부를 잊지 못해
+                            <span class="bold">또</span>
+                            밴드부 들어왔습니다.
+                            <span class="bold">하지만</span> 전공과 병행이
+                            불가능해 그만... 으흑 ㅜㅜ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-section container section-5">
+            <div class="grid-container">
+                <div class="fi-left col-span-4">
+                    <div class="fi-text-wrap">
+                        <p class="key-w">2025 | 계원예술대학교</p>
+                        <p class="copy-l">기보를<br />꿈꾸다</p>
+                        <p class="copy-m">
+                            <span class="bold">기타+보컬</span>
+                            말도 안 되는 멋짐의 한계점입니다... 인정하시나요? 네
+                            그래서
+                            <span class="bold">저도 꿈꿨는데요</span> 비록
+                            기보로서 공연에 나가진 못 했지만, 기타는 많이
+                            늘었답니다.ㅜㅜ
+                        </p>
+                    </div>
+                </div>
+                <div class="final-img col-span-7">
+                    <video src="assets/final/5.mov" autoplay loop muted></video>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-section container reverse section-6">
+            <div class="grid-container">
+                <div class="final-img col-span-7">
+                    <video src="assets/final/6.mov" autoplay loop muted></video>
+                </div>
+                <div class="fi-left col-span-4">
+                    <div class="fi-text-wrap">
+                        <p class="key-w">2025 | 계원예술대학교</p>
+                        <p class="copy-l">공연을 위한...<br />연습을 해요</p>
+                        <p class="copy-m">
+                            학기말 공연에 나가기 위해
+                            <span class="bold">유다빈밴드의 백일몽</span>을
+                            연습했습니다~...
+                            <span class="bold"
+                                >화면 좌측에 있는 음소거를 해제하고 세션의 맛을
+                                느껴보세요!</span
+                            >
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="container">
+            <div class="grid-container">
+                <span class="col-span-4 footer-wrap">
+                    <div class="logo"></div>
+                    <p class="foo-t">© 2025. HAEEUN KO. All Rights Reserved.</p>
+                </span>
+
+                <span class="col-offset-7 col-span-2 footer-wrap_col foo-t">
+                    <span class="gray">웹퍼블리싱 기초 기말고사</span
+                    ><br />FLUID GROOVE
+                </span>
+
+                <span class="col-offset-9 col-span-3 footer-wrap_col foo-t">
+                    <span class="gray">2025학년도 2학기</span
+                    ><br />디지털미디어디자인과 | 22561005 | 고해은
+                </span>
+            </div>
+        </footer>
+    </body>
+</html>

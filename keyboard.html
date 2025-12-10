@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fluid groove - KEYBOARD</title>
+        <link rel="stylesheet" href="style.css" />
+        <style>
+            /* * 기존 CSS의 레이아웃을 사용하므로, 
+             * 피아노 본체와 관련된 스타일만 right-contents 내에서 재정의합니다.
+             */
+
+            /* 피아노 본체가 right-contents 안에서 중앙 정렬되도록 설정 */
+            .keyboard-main-wrap {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center; /* 수직 중앙 정렬 */
+                align-items: center; /* 수평 중앙 정렬 */
+            }
+
+            /* 🎹 피아노 본체 (약 1.4배 증가) */
+            .piano {
+                position: relative;
+                /* width: 36.45vw * 1.4 = 51.03vw */
+                width: 51.03vw;
+                /* height: 8.33vw * 1.4 = 11.66vw */
+                height: 11.66vw;
+                background: #222;
+                /* border-top: 0.208vw * 1.4 = 0.29vw */
+                /* border-top: 0.29vw solid #555; */
+                /* box-shadow: 0 -0.208vw * 1.4 = -0.29vw, 1.041vw * 1.4 = 1.45vw */
+                /* box-shadow: 0 -0.29vw 1.45vw rgba(0, 0, 0, 0.5) inset; */
+                display: flex;
+                justify-content: center;
+            }
+
+            /* 흰건반 */
+            .white {
+                display: flex;
+            }
+
+            .white div {
+                /* width: 2.604vw * 1.4 = 3.65vw */
+                width: 3.65vw;
+                /* height: 8.33vw * 1.4 = 11.66vw */
+                height: 11.66vw;
+                /* background: white; */
+                border: 1px solid #aaa;
+                /* border-bottom: 0.156vw * 1.4 = 0.218vw */
+                border-bottom: 1.4px solid #888;
+                box-sizing: border-box;
+                position: relative;
+                transition: all 0.1s ease;
+                cursor: pointer;
+            }
+
+            .white div:active {
+                background: #ff007f;
+                border-bottom: 1.4px solid #ff007f;
+                border: 1px solid #ff007f;
+                /* transform: translateY(0.156vw * 1.4 = 0.218vw) */
+                transform: translateY(0.218vw);
+            }
+
+            /* 흑건반 */
+            .black {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 3;
+            }
+
+            .black div {
+                position: absolute;
+                /* width: 1.5625vw * 1.4 = 2.19vw */
+                width: 2.19vw;
+                /* height: 5.208vw * 1.4 = 7.29vw */
+                height: 7.29vw;
+                background: #040404;
+                /* border-radius: 0.208vw * 1.4 = 0.29vw */
+                border-radius: 0 0 0.29vw 0.29vw;
+                /* box-shadow: 0 0.156vw * 1.4 = 0.218vw, 0.208vw * 1.4 = 0.29vw */
+                /* box-shadow: 0 0.218vw 0.29vw rgba(0, 0, 0, 0.6); */
+                transition: all 0.1s ease;
+                cursor: pointer;
+            }
+
+            .black div:active {
+                background: #ff007f;
+                /* transform: translateY(0.156vw * 1.4 = 0.218vw) */
+                transform: translateY(0.218vw);
+            }
+
+            /* -----------------------------------------------------------------
+     * 🎹 흑건반 위치 조정 (모든 left 값을 약 1.4배 증가)
+     * ----------------------------------------------------------------- */
+            .black div:nth-child(1) {
+                left: 2.55vw;
+            } /* 1.82vw * 1.4 */
+            .black div:nth-child(2) {
+                left: 6.19vw;
+            } /* 4.42vw * 1.4 */
+            .black div:nth-child(3) {
+                left: 13.48vw;
+            } /* 9.63vw * 1.4 */
+            .black div:nth-child(4) {
+                left: 17.14vw;
+            } /* 12.24vw * 1.4 */
+            .black div:nth-child(5) {
+                left: 20.78vw;
+            } /* 14.84vw * 1.4 */
+            .black div:nth-child(6) {
+                left: 27.93vw;
+            } /* 19.95vw * 1.4 */
+            .black div:nth-child(7) {
+                left: 31.57vw;
+            } /* 22.55vw * 1.4 */
+            .black div:nth-child(8) {
+                left: 38.86vw;
+            } /* 27.76vw * 1.4 */
+            .black div:nth-child(9) {
+                left: 42.5vw;
+            } /* 30.36vw * 1.4 */
+            .black div:nth-child(10) {
+                left: 46.16vw;
+            } /* 32.97vw * 1.4 */
+
+            /* -----------------------------------------------------------------
+     * 텍스트 디스플레이 수정 (이전 요청의 copy-m flex 해제)
+     * ----------------------------------------------------------------- */
+            .copy-m {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <ul class="logo">
+                <li><a href="index.html"></a></li>
+            </ul>
+            <nav>
+                <ul>
+                    <li><a href="drum.html">DRUM</a></li>
+                    <li><a href="guitar.html">E. GUITAR</a></li>
+                    <li><a href="bass.html">BASS</a></li>
+                    <li><a href="keyboard.html">KEYBOARD</a></li>
+                    <li><a href="final.html">FINAL MIX</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="guitar container">
+            <div class="grid-container">
+                <aside class="left-contents col-span-3">
+                    <div class="top">
+                        <p class="key-w white">Session</p>
+                        <p class="copy-l white">
+                            KEYBOARD : <br />Click to activate
+                        </p>
+                        <p class="copy-m white">
+                            <span class="bold"
+                                >The progressions that brought me comfort and
+                                inspiration.</span
+                            >
+                            Analyze my favorite chord progressions that
+                            underpinned countless band songs and
+                            <span class="bold"
+                                >try laying your own melody over them.</span
+                            >
+                        </p>
+                    </div>
+                    <div class="bottom fav-grid-area">
+                        <div class="my-fav-title">
+                            <p class="key-w white">MY FAV</p>
+                        </div>
+                        <div class="fav-button-wrap">
+                            <h1
+                                id="gmaj7-btn"
+                                data-sound="assets/keyboard/Gmaj7.mp3"
+                            >
+                                G#m7
+                            </h1>
+                            <h1
+                                id="a7sus4-btn"
+                                data-sound="assets/keyboard/A7sus4.mp3"
+                            >
+                                A
+                            </h1>
+                            <h1
+                                id="bm7-btn"
+                                data-sound="assets/keyboard/Bm7.mp3"
+                            >
+                                Am7
+                            </h1>
+                            <h1
+                                id="cadd9-btn"
+                                data-sound="assets/keyboard/Cadd9.mp3"
+                            >
+                                F
+                            </h1>
+                        </div>
+                    </div>
+                </aside>
+
+                <main class="right-contents col-offset-3 col-span-9">
+                    <div class="keyboard-main-wrap">
+                        <div class="piano" id="piano">
+                            <div class="white" id="white"></div>
+                            <div class="black" id="black"></div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+
+        <footer class="container">
+            <div class="grid-container">
+                <span class="col-span-4 footer-wrap">
+                    <div class="logo"></div>
+                    <p class="foo-t">© 2025. HAEEUN KO. All Rights Reserved.</p>
+                </span>
+
+                <span class="col-offset-7 col-span-2 footer-wrap_col foo-t">
+                    <span class="gray">웹퍼블리싱 기초 기말고사</span
+                    ><br />FLUID GROOVE
+                </span>
+
+                <span class="col-offset-9 col-span-3 footer-wrap_col foo-t">
+                    <span class="gray">2025학년도 2학기</span
+                    ><br />디지털미디어디자인과 | 22561005 | 고해은
+                </span>
+            </div>
+        </footer>
+
+        <audio id="C" src="assets/keyboard/C3.m4a"></audio>
+        <audio id="C#" src="assets/keyboard/Cs3.m4a"></audio>
+        <audio id="D" src="assets/keyboard/D3.m4a"></audio>
+        <audio id="D#" src="assets/keyboard/Ds3.m4a"></audio>
+        <audio id="E" src="assets/keyboard/E3.m4a"></audio>
+        <audio id="F" src="assets/keyboard/F3.m4a"></audio>
+        <audio id="F#" src="assets/keyboard/Fs3.m4a"></audio>
+        <audio id="G" src="assets/keyboard/G3.m4a"></audio>
+        <audio id="G#" src="assets/keyboard/Gs3.m4a"></audio>
+        <audio id="A" src="assets/keyboard/A3.m4a"></audio>
+        <audio id="A#" src="assets/keyboard/As3.m4a"></audio>
+        <audio id="B" src="assets/keyboard/B3.m4a"></audio>
+
+        <script src="script.js"></script>
+    </body>
+</html>

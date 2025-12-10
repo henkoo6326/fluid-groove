@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>fluid groove</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header>
+            <ul class="logo">
+                <li><a href="index.html"></a></li>
+            </ul>
+            <nav>
+                <ul>
+                    <li><a href="drum.html">DRUM</a></li>
+                    <li><a href="guitar.html">E. GUITAR</a></li>
+                    <li><a href="bass.html">BASS</a></li>
+                    <li><a href="keyboard.html">KEYBOARD</a></li>
+                    <li><a href="final.html">FINAL MIX</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="disk" class="disk">
+            <video autoplay muted loop class="bg-video">
+                <source src="assets/disk-ffinal.mp4" type="video/mp4" />
+            </video>
+        </section>
+
+        <div class="scroll-content-wrapper">
+            <div class="gap"></div>
+            <section class="album-section container">
+                <div class="grid-container">
+                    <div class="al-left col-span-4">
+                        <div class="al-text-wrap">
+                            <p class="key-w">FLUID GROOVE</p>
+                            <p class="copy-l">
+                                More than a card : <br />Click to activate
+                            </p>
+                            <p class="copy-m">
+                                나의 밴드 경험이 만들어낸
+                                <span class="bold"
+                                    >네 가지 핵심 사운드 모듈</span
+                                >을 소개합니다. 기록을 확인하고,
+                                <span class="bold">하나의 트랙으로 합쳐진</span>
+                                음악을 감상하세요. 가장 개인적이면서도 기술적인
+                                사운드 여정입니다.
+                            </p>
+                        </div>
+
+                        <div class="al-button-wrap">
+                            <h1 id="drum-btn" data-image="assets/drum.jpg">
+                                DRUM
+                            </h1>
+                            <h1
+                                id="eguitar-btn"
+                                data-image="assets/e.guitar.jpg"
+                            >
+                                E. GUITAR
+                            </h1>
+                            <h1 id="bass-btn" data-image="assets/bass.jpg">
+                                BASS
+                            </h1>
+                            <h1
+                                id="keyboard-btn"
+                                data-image="assets/keyboard.jpg"
+                            >
+                                KEYBOARD
+                            </h1>
+                        </div>
+                    </div>
+
+                    <!-- <div class="fluid-img col-offset-3 col-span-2"></div> -->
+
+                    <div
+                        id="poster-image"
+                        class="poster-img col-offset-6 col-span-6"
+                    ></div>
+                </div>
+            </section>
+
+            <div class="gap"></div>
+        </div>
+
+        <footer class="container">
+            <div class="grid-container">
+                <span class="col-span-4 footer-wrap">
+                    <div class="logo"></div>
+                    <p class="foo-t">
+                        © 2025. HAEEUN KO. All Rights Reserved.
+                    </p>
+                </span>
+
+                <span class="col-offset-7 col-span-2 footer-wrap_col foo-t">
+                    <span class="gray">웹퍼블리싱 기초 기말고사</span
+                    ><br />FLUID GROOVE
+                </span>
+
+                <span class="col-offset-9 col-span-3 footer-wrap_col foo-t">
+                    <span class="gray">2025학년도 2학기</span
+                    ><br />디지털미디어디자인과 | 22561005 | 고해은
+                </span>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>
