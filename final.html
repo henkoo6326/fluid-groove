@@ -65,39 +65,12 @@
             .final-img {
                 width: 100%;
                 height: 100%;
-                /* 비디오/이미지 컨테이너 기준점 */
+                /* 이미지/비디오 컨테이너 기준점 */
                 position: relative;
             }
 
-            /* 이미지 공통 스타일 (배경 이미지 설정 시 필수) */
-            .final-section.section-1 .final-img,
-            .final-section.section-2 .final-img,
-            .final-section.section-3 .final-img,
-            .final-section.section-4 .final-img {
-                background-position: center;
-                background-size: cover;
-                background-repeat: no-repeat;
-            }
-
-            /* ⭐ 이미지 파일 경로 설정 (섹션 1~4) - 절대 경로 및 파일명 일치 ⭐ */
-            .final-section.section-1 .final-img {
-                /* 로컬 파일명: 1.JPG */
-                background-image: url(/assets/final/1.JPG);
-            }
-            .final-section.section-2 .final-img {
-                /* 로컬 파일명: 2.JPG */
-                background-image: url(/assets/final/2.JPG);
-            }
-            .final-section.section-3 .final-img {
-                /* 로컬 파일명: 3.JPG */
-                background-image: url(/assets/final/3.JPG);
-            }
-            .final-section.section-4 .final-img {
-                /* 로컬 파일명: 4.jpeg */
-                background-image: url(/assets/final/4.jpg);
-            }
-
-            /* ⭐ 비디오 스타일 (섹션 5, 6 유지) ⭐ */
+            /* ⭐ IMG 및 VIDEO 공통 스타일 (부모 영역 꽉 채우기) ⭐ */
+            .final-img img,
             .final-img video {
                 position: absolute;
                 top: 0;
@@ -232,13 +205,23 @@
                         </p>
                     </div>
                 </div>
-                <div class="final-img col-span-7"></div>
+                <div class="final-img col-span-7">
+                    <img
+                        src="/assets/final/1.JPG"
+                        alt="밴드부원들과 함께 장비 앞에서 찍은 사진"
+                    />
+                </div>
             </div>
         </section>
 
         <section class="final-section container reverse section-2">
             <div class="grid-container">
-                <div class="final-img col-span-7"></div>
+                <div class="final-img col-span-7">
+                    <img
+                        src="/assets/final/2.JPG"
+                        alt="밴드부 장비 언박싱 사진"
+                    />
+                </div>
                 <div class="fi-left col-span-4">
                     <div class="fi-text-wrap">
                         <p class="key-w">2023 | 제주중앙여자고등학교</p>
@@ -274,13 +257,23 @@
                         </p>
                     </div>
                 </div>
-                <div class="final-img col-span-7"></div>
+                <div class="final-img col-span-7">
+                    <img
+                        src="/assets/final/3.JPG"
+                        alt="체육대회 공연 후 기념사진"
+                    />
+                </div>
             </div>
         </section>
 
         <section class="final-section container reverse section-4">
             <div class="grid-container">
-                <div class="final-img col-span-7"></div>
+                <div class="final-img col-span-7">
+                    <img
+                        src="/assets/final/4.jpg"
+                        alt="계원예술대학교 밴드부 사진"
+                    />
+                </div>
                 <div class="fi-left col-span-4">
                     <div class="fi-text-wrap">
                         <p class="key-w">2025 | 계원예술대학교</p>
