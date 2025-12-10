@@ -68,23 +68,8 @@
                 /* 비디오/이미지 컨테이너 기준점 */
                 position: relative;
             }
-
-            /* ⭐ 이미지 파일 경로 설정 (섹션 1~4) ⭐ */
-            .final-section.section-1 .final-img {
-                background-image: url(/assets/final/1.JPG); /* 앞에 '/' 추가 */
-            }
-            .final-section.section-2 .final-img {
-                background-image: url(/assets/final/2.JPG);
-            }
-            .final-section.section-3 .final-img {
-                background-image: url(/assets/final/3.JPG);
-            }
-            .final-section.section-4 .final-img {
-                background-image: url(/assets/final/4.jpeg);
-            }
-
-            /* 이미지 공통 스타일 */
-            .final-img[style*="background-image"],
+            
+            /* 이미지 공통 스타일 (배경 이미지 설정 시 필수) */
             .final-section.section-1 .final-img,
             .final-section.section-2 .final-img,
             .final-section.section-3 .final-img,
@@ -94,7 +79,26 @@
                 background-repeat: no-repeat;
             }
 
-            /* ⭐ 비디오 스타일 (섹션 5, 6) ⭐ */
+            /* ⭐ 이미지 파일 경로 설정 (섹션 1~4) - 절대 경로 및 파일명 일치 ⭐ */
+            .final-section.section-1 .final-img {
+                /* 로컬 파일명: 1.JPG */
+                background-image: url(/assets/final/1.JPG);
+            }
+            .final-section.section-2 .final-img {
+                /* 로컬 파일명: 2.JPG */
+                background-image: url(/assets/final/2.JPG);
+            }
+            .final-section.section-3 .final-img {
+                /* 로컬 파일명: 3.JPG */
+                background-image: url(/assets/final/3.JPG);
+            }
+            .final-section.section-4 .final-img {
+                /* 로컬 파일명: 4.jpeg */
+                background-image: url(/assets/final/4.jpeg);
+            }
+
+
+            /* ⭐ 비디오 스타일 (섹션 5, 6 유지) ⭐ */
             .final-img video {
                 position: absolute;
                 top: 0;
